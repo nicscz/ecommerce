@@ -1,46 +1,31 @@
-import { useState } from 'react';
-import ProductList, { Product } from './components/ProductList';
-import axios from 'axios';
+import { useQuery } from "react-query"
+import { ResponseBody } from "./models/Product"
+import axios from "axios"
 
 function App() {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [searchResults, setSearchResults] = useState<Product[]>([]);
+  
+  const { data, isFetching } = useQuery('product', async (): Promise<ResponseBody> => {
+    const page = 1, pageSize = 10
+    const response = await axios.get(`http://localhost:3000/api/products?page=${page}&pageSize=${pageSize}`)
 
-  const handleSearch = async () => {
-    if (!searchTerm) return;
-
-    try {
-      const response = await axios.post(
-        'http://localhost:3000/api/productByName',
-        {
-          name: searchTerm,
-        }
-      );
-      setSearchResults(response.data.body);
-    } catch (error) {
-      console.error('Error searching for products:', error);
-    }
-  };
+    return response.data.body
+  }) 
 
   return (
     <div>
-      <header>
-        <h1>MMartan</h1>
-        <div>
-          <input
-            type="text"
-            placeholder="Buscar por nome do produto"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-          <button onClick={handleSearch}>Buscar</button>
+      {isFetching && <p>Carregando...</p>}
+      {data?.products?.map(product => (
+        <div key={product.id}>
+          <strong>{product.nome}</strong>
+          <p>{product.descricao}</p>
+          <p>Preço Promocional: R${product.preco_promocional}</p>
+          <p>Preço Original: R${product.preco_original}</p>
+          <p>Categoria: {product.categoria}</p>
+          <p>Criado em: {product.created_at}</p>
         </div>
-      </header>
-      <main>
-        <ProductList products={searchResults.length > 0 ? searchResults : null} />
-      </main>
+      ))}
     </div>
-  );
+  )
 }
 
 export default App;
