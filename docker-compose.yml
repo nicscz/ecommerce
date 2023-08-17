@@ -35,14 +35,15 @@ services:
       - ecommerce-network
   # frontend:
   #   build:
-  #     context: ./frontend
+  #     context: ./ecommerce-frontend
   #   ports:
-  #     - "5173:3000"
+  #     - "5173:5173"
   #   volumes:
-  #     - ./frontend:/app
+  #     - ./ecommerce-frontend:/app
   #   networks:
   #     - ecommerce-network
-
+      
 networks:
   ecommerce-network:
     driver: bridge
+
