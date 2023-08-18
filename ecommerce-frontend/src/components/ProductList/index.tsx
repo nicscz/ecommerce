@@ -1,8 +1,11 @@
+import React from 'react';
 import { useEffect, useState } from 'react';
 import { List } from './style';
 import { Product } from '../../models/Product';
 import { api } from '../../services/api';
 import { Footer } from '../Footer';
+import { Search } from '../Search';
+import { FiSearch } from 'react-icons/fi';
 
 interface ProductListProps {
   products?: Product[];
@@ -17,24 +20,34 @@ export function ProductList(props: ProductListProps) {
   const [foundedProduct, setFoundedProduct] = useState<FoundedProductProps>({ totalProducts: "0" });
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const pageSize = 10;
+  const [pageSize, setPageSize] = useState(10);
+  const [searchText, setSearchText] = useState<string>('');
+
+
+  const fetchProducts = async (page: number, size: number, search: string = '') => {
+    try {
+      const response = await api.get(`/products?page=${page}&pageSize=${size}&search=${search}`);
+      setFoundedProduct({ totalProducts: response.data.body.totalProducts });
+      setProducts(response.data.body.products);
+      setTotalPages(response.data.body.totalPages);
+      setCurrentPage(page);
+    } catch (error) {
+      console.error('Error fetching products:', error);
+    }
+  };
 
   useEffect(() => {
-    async function fetchProducts() {
-      try {
-        const response = await api.get(`/products?page=${currentPage}&pageSize=${pageSize}`);
-        setFoundedProduct({ totalProducts: response.data.body.totalProducts });
-        setProducts(response.data.body.products);
-        setTotalPages(response.data.body.totalPages);
-      } catch (error) {
-        console.error('Error fetching products:', error);
-      }
-    }
-    fetchProducts();
-  }, [currentPage]);
+    fetchProducts(currentPage, pageSize, searchText);
+  }, [currentPage, pageSize, searchText]);
+
+  const handleSearch = (search: string) => {
+    setSearchText(search);
+    setCurrentPage(1);
+  };
 
   return (
     <List>
+      <Search icon={FiSearch} onSearch={handleSearch} />
       <p className='totalProducts'>{foundedProduct.totalProducts} produtos encontrados</p>
       {products.map((product) => (
         <div className='productCard' key={product.id}>
@@ -48,7 +61,7 @@ export function ProductList(props: ProductListProps) {
           </div>
         </div>
       ))}
-      <Footer paginatedProducts={{ totalPages, currentPage, setCurrentPage }} productsPerPage={pageSize} />
+      <Footer paginatedProducts={{ totalPages, currentPage, setCurrentPage, fetchProducts }} productsPerPage={pageSize} />
     </List>
   );
 }

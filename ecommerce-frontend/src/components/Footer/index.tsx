@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Container } from "./styles";
+import React, { useState, useEffect } from 'react';
+import { Container } from './styles';
 import { Pagination, Stack } from '@mui/material';
 
 interface FooterProps {
@@ -8,6 +8,7 @@ interface FooterProps {
     totalPages: number;
     currentPage: number;
     setCurrentPage: (value: number) => void;
+    fetchProducts: (page: number, size: number) => void;
   };
 }
 
@@ -18,7 +19,12 @@ export function Footer(props: FooterProps) {
   const handleProductsPerPageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedValue = parseInt(event.target.value, 10);
     setSelectedProductsPerPage(selectedValue);
+    paginatedProducts.fetchProducts(1, selectedValue);
   };
+
+  useEffect(() => {
+    setSelectedProductsPerPage(productsPerPage);
+  }, [productsPerPage]);
 
   return (
     <Container>

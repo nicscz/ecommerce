@@ -1,46 +1,70 @@
-# Getting Started with Create React App
+# E-commerce
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Desafio proposto para vaga de FullStack Developer.
 
-## Available Scripts
+## Índice
 
-In the project directory, you can run:
+- [Visão Geral](#visão-geral)
+- [Tecnologias Utilizadas](#tecnologias-utilizadas)
+- [Instalação](#instalação)
+- [Como Usar](#como-usar)
+- [Funcionalidades](#funcionalidades)
+- [Estrutura de Diretórios](#estrutura-de-diretórios)
+- [Contribuição](#contribuição)
+- [Licença](#licença)
 
-### `npm start`
+## Desafio Proposto
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+O desafio consistiu em desenvolver uma aplicação que permita a listagem de
+produtos em um e-commerce. Essa aplicação contém algumas
+funcionalidades, como busca pelo nome do produto, paginação e limite de
+produtos por página.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Tecnologias Utilizadas
 
-### `npm test`
+As principais tecnologias abordadas foram Typescript, Javascript, Jest, Postgres e Redis para o backend e Typescript, React, Javascript, Materials.UI para o frontend.
+O projeto possui formas de build tanto localmente quanto via docker. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Padrão de Projeto
 
-### `npm run build`
+Durante o desenvolvimento abordei alguns conceitos e pude fazer um mix de patterns que agregacem no projeto, tais como: 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- You Aren't Gonna Need It (YAGNI)
+- Single Responsability (SRP) 
+- Open Closed - (OCS)
+- Liskov Substitution (LSP)
+- Interface Segregation (ISP)
+- Dependency Inversion (DIP)
+- Repository Pattern
+- Test Doubles(Mock)
+- Smalls Commits
+- System Under Test
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Arquitetura escolhida: Clean Code Architect
+## Instalação
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Instruções detalhadas sobre como instalar e configurar o projeto em um ambiente local. Certifique-se de incluir comandos de instalação, configuração de variáveis de ambiente, ou qualquer outra etapa necessária.
 
-### `npm run eject`
+## Como Usar
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Forneça um guia passo a passo sobre como utilizar o projeto depois de tê-lo instalado. Isso pode incluir como executar o aplicativo, como fazer testes, como usar as funcionalidades principais, etc.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Funcionalidades
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Enumere e descreva as principais funcionalidades do projeto. Explique o que cada funcionalidade faz e como os usuários podem interagir com ela.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Estrutura de Diretórios
 
-## Learn More
+Explique a estrutura de diretórios do projeto. Isso ajuda os contribuidores e usuários a entenderem onde encontrar diferentes partes do código-fonte, componentes, estilos, testes, etc.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Contribuição
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Explique como as pessoas podem contribuir para o projeto. Isso pode incluir instruções sobre como fazer um fork, criar uma branch, fazer pull requests, diretrizes de estilo de código, etc.
+
+## Licença
+
+Indique a licença sob a qual o projeto está disponível. Isso pode ser uma licença de código aberto como MIT, Apache, etc. Certifique-se de incluir o texto da licença ou um link para mais informações.
+
+---
+
+Lembre-se de personalizar cada seção para se adequar ao seu projeto específico. Um bom README é fundamental para tornar o projeto acessível e amigável para outros desenvolvedores e colaboradores.

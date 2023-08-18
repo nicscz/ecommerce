@@ -34,7 +34,7 @@ select {
   align-items: center;
   position: fixed;
   bottom: 0; 
-  border-top: 2px solid #6e6e6e55;
+  border-top: 2px solid #dfdfdf50;
 
   .logo {
     padding-left: 30px;

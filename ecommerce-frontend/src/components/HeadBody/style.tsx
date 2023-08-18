@@ -4,7 +4,7 @@ import { styled } from "styled-components"
 export const Container = styled.header`
   background-color: #dbdada7f;
   margin-top: 55px; 
-  width: 60%;
+  width: 70%;
   height: 90px;
   display: flex;
   justify-content: space-between;
