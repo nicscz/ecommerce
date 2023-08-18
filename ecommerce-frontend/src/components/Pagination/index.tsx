@@ -32,7 +32,7 @@ export default function PaginatedProducts() {
       .catch(error => {
         console.error('Erro ao obter os dados da API:', error);
       });
-  }, [currentPage]); // Executa apenas uma vez ao montar o componente
+  }, [currentPage])
 
   return (
     <div>

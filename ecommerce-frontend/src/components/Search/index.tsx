@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Container } from './style';
 
 export interface SearchProps {
-  icon?: React.ElementType; // Tipo para o ícone
+  icon?: React.ElementType
   onSearch?: (searchText: string) => void;
 }
 
