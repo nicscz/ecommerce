@@ -47,7 +47,7 @@ export function ProductList(props: ProductListProps) {
 
   return (
     <List>
-      <Search icon={FiSearch} onSearch={handleSearch} />
+      {/* <Search icon={FiSearch} onSearch={handleSearch} /> */}
       <p className='totalProducts'>{foundedProduct.totalProducts} produtos encontrados</p>
       {products.map((product) => (
         <div className='productCard' key={product.id}>

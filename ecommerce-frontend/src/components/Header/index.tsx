@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Container } from "./style";
 import { FiSearch } from 'react-icons/fi';
+import { Search } from '../Search';
 
 interface HeaderProps {
   onSearch: (searchText: string) => void;
@@ -19,16 +20,9 @@ export function Header(props: HeaderProps) {
 
   return (
     <Container>
+      
       <h3 className={'logo'}>mmartan</h3>
-      <input
-        type="text"
-        placeholder="Search..."
-        value={searchText}
-        onChange={handleSearchTextChange}
-      />
-      <button className="search-button" onClick={handleSearch}>
-        <FiSearch className="search-icon" />
-      </button>
+      <Search/>
     </Container>
   );
 }
